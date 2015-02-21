@@ -1,0 +1,17 @@
+{
+    "name": "arcostasi/silexmantic-skeleton",
+    "description": "Simple MVC Skeleton with Silex, Twig and Semantic UI",
+    "require": {
+        "silex/silex": "~1.2",
+        "twig/twig": "~1.18",
+        "symfony/twig-bridge": "~2.6",
+        "symfony/security": "~2.6"
+    },
+    "license": "New BSD",
+    "authors": [
+        {
+            "name": "Anderson Costa",
+            "email": "arcostasi@gmail.com"
+        }
+    ]
+}
