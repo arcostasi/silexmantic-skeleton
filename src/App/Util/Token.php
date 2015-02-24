@@ -11,7 +11,7 @@ namespace App\Util;
 class Token {
 
     private $token;
-    private $salt = "a2b9c66a21d27ab117c77ff2c8ae05100f6498b9";
+    private $salt = "";
     private $number;
     private $mktime;
 
@@ -23,7 +23,7 @@ class Token {
      * $number: (String) Número do destinatário
      * $mktime: (String) Data e hora da requisição no formato timestamp
      */
-    public function __construct($number, $mktime) 
+    public function __construct($number, $mktime)
     {
         // Cria o código de autenticação
         $this->setToken($number, $mktime);
@@ -34,7 +34,7 @@ class Token {
      *
      * @return (String) $this->token
      */
-    public function getToken() 
+    public function getToken()
     {
         // Retorna o código de autenticação
         return $this->token;
@@ -45,7 +45,7 @@ class Token {
      *
      * @param (String), time()
      */
-    public function setToken($number, $mktime) 
+    public function setToken($number, $mktime)
     {
         // Seta o número do destinatário
         $this->setNumber($number);
@@ -69,7 +69,7 @@ class Token {
      *
      * @param (String)
      */
-    private function getSalt() 
+    private function getSalt()
     {
         // Retorna o salt
         return $this->salt;
@@ -80,7 +80,7 @@ class Token {
      *
      * @return (String)
      */
-    public function getNumber() 
+    public function getNumber()
     {
         // Retorna o número do destinatário
         return $this->number;
@@ -91,7 +91,7 @@ class Token {
      *
      * @param (String)
      */
-    public function setNumber($number) 
+    public function setNumber($number)
     {
         // Seta o número do destinatário
         $this->number = $number;
@@ -102,7 +102,7 @@ class Token {
      *
      * @return time()
      */
-    public function getMktime() 
+    public function getMktime()
     {
         // Retorna a data e hora da requisição (timestamp)
         return $this->mktime;
@@ -113,7 +113,7 @@ class Token {
      *
      * @param time()
      */
-    public function setMktime($mktime) 
+    public function setMktime($mktime)
     {
         // Seta a data e hora da requisição (timestamp)
         $this->mktime = $mktime;
