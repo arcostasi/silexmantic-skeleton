@@ -5,7 +5,7 @@ A micro-MVC skeleton on the arms of Silex and Semantic-UI
 
 If user interface is the vocabulary of the web, silexmantic is the kickoff.
 
-See the [online demo](http://arcostasi.com/silexmantic/).
+See the [online demo](http://arcostasi.com/silexmantic/){target="_blank"}.
 
 This skeleton use Composer, Silex, Twig, jQuery and Semantic-UI
 
