@@ -10,7 +10,7 @@ use Symfony\Component\Security\Http\HttpUtils;
 use Symfony\Component\Security\Core\Authentication\Token\TokenInterface;
 
 /**
- * Classe utilizada para customizar a autenticação com sucesso
+ * Custom Authentication Success Handler
  *
  * @author Anderson Costa <arcostasi@gmail.com>
  */
@@ -18,18 +18,35 @@ class CustomAuthenticationSuccessHandler extends DefaultAuthenticationSuccessHan
 
     protected $app = null;
 
-    public function __construct(HttpUtils $httpUtils, array $options, Application $app) 
+    /**
+     * Authentication Success Construct
+     * @param HttpUtils $httpUtils
+     * @param array $options
+     * @param Application $app
+     */
+    public function __construct(HttpUtils $httpUtils, array $options, Application $app)
     {
         parent::__construct($httpUtils, $options);
 
         $this->app = $app;
     }
 
-    public function onAuthenticationSuccess(Request $request, TokenInterface $token) 
+    /**
+     * Authentication Success
+     * @param Request $request
+     * @param TokenInterface $token
+     * @return \Symfony\Component\HttpFoundation\JsonResponse
+     */
+    public function onAuthenticationSuccess(Request $request, TokenInterface $token)
     {
-        $this->app['security']->setToken($token);
+        // Acesso autorizado, redireciona para o administrador
+        $result = array(
+            'success' => true,
+            'message' => 'Acesso autorizado.',
+            'redirect' => $this->app['url_generator']->generate('admin')
+        );
 
-        return $this->httpUtils->createRedirectResponse($request, $this->determineTargetUrl($request));
+        return $this->app->json($result);
     }
 
 }

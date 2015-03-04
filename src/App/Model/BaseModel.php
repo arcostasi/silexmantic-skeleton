@@ -12,10 +12,10 @@ class BaseModel {
     protected $db;
 
     /**
-     * 
-     * @param Database Provider
+     * Database Connect
+     * @param $db
      */
-    function __construct($db) 
+    function __construct($db)
     {
         $this->db = $db;
     }

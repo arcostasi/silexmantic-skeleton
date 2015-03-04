@@ -4,14 +4,14 @@ namespace App\Provider;
 
 use App\Model\BaseModel;
 
+use Doctrine\DBAL\Query\QueryBuilder;
+
 use Symfony\Component\Security\Core\User\UserProviderInterface;
 use Symfony\Component\Security\Core\User\UserInterface;
 use Symfony\Component\Security\Core\User\User;
-use Symfony\Component\Security\Core\Exception\UnsupportedUserException;
-use Symfony\Component\Security\Core\Exception\UsernameNotFoundException;
 
 /**
- * Provide users to the security service
+ * User Provider to the Security Service
  *
  * @author Anderson Costa <arcostasi@gmail.com>
  */
@@ -19,34 +19,35 @@ class UserProvider extends BaseModel implements UserProviderInterface {
 
     /**
      * Load user by username
-     * @param $user
-     * @return $user
+     * @param string $username
+     * @return User
+     * @throws \Exception
      */
-    public function loadUserByUsername($username) 
+    public function loadUserByUsername($username)
     {
-        // tratamento dos caracteres escape usados em SQL injections
-        $username = $this->db->real_escape_string($username);
+        $qb = new QueryBuilder($this->db);
 
-        $sql = <<<"SQL"
-SELECT `username`, `email`, `password`, `roles`
-FROM users
-WHERE username = '$username' AND `status` = 'active'
-SQL;
+        $stmt = $qb->select('username, password, roles')
+            ->from('users', 'u')
+            ->where('u.username = :username')
+            ->andWhere('u.active = 1')
+            ->setParameter('username', $username)
+            ->execute();
 
-        $result = $this->db->query($sql);
-
-        if (!$result) {
-            throw new \Exception(sprintf('SQL Error: %s', $sql));
-        }
-
-        if (!$user = $result->fetch_array(MYSQLI_ASSOC)) {
+        if (!$user = $stmt->fetchObject()) {
             throw new \Exception(sprintf('Usuário "%s" não encontrado.', $username));
         }
 
-        return new User($user['username'], $user['password'], explode(',', $user['roles']), true, true, true, true);
+        return new User($user->username, $user->password, explode(',', $user->roles), true, true, true, true);
     }
 
-    public function refreshUser(UserInterface $user) 
+    /**
+     * User refresh
+     * @param UserInterface $user
+     * @return User
+     * @throws \Exception
+     */
+    public function refreshUser(UserInterface $user)
     {
         if (!$user instanceof User) {
             throw new \Exception(sprintf('A interface "%s" não é suportado.'), get_class($user));
@@ -55,7 +56,12 @@ SQL;
         return $this->loadUserByUsername($user->getUsername());
     }
 
-    public function supportsClass($class) 
+    /**
+     * Class supports
+     * @param string $class
+     * @return bool
+     */
+    public function supportsClass($class)
     {
         return $class === 'Symfony\Component\Security\Core\User\User';
     }

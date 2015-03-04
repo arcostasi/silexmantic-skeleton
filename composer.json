@@ -1,6 +1,6 @@
 {
     "name": "arcostasi/silexmantic-skeleton",
-    "description": "Simple MVC Skeleton with Silex, Twig and Semantic UI",
+    "description": "A micro-MVC skeleton on the arms of Silex and Semantic-UI",
     "require": {
         "silex/silex": "~1.2",
         "symfony/browser-kit": "~2.3",

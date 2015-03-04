@@ -1,5 +1,40 @@
 Silexmantic Skeleton
 =======
 
-Simple MVC Skeleton with Silex, Twig and Semantic UI
+A micro-MVC skeleton on the arms of Silex and Semantic-UI
 
+If user interface is the vocabulary of the web, silexmantic is the kickoff.
+
+This skeleton use Composer, Silex, Twig, jQuery and Semantic-UI
+
+## Quick start
+
+1 - Clone the repo:
+
+```bash
+git clone https://github.com/arcostasi/silexmantic-skeleton.git
+```
+
+2 - Change to the directory created
+
+```bash
+cd silexmantic-skeleton/
+```
+
+3 - Download Composer
+
+```bash
+php -r "readfile('https://getcomposer.org/installer');" | php
+```
+
+4 - Composer Install
+
+```bash
+php composer.phar install
+```
+
+5 - Start PHP Built-in web server:
+
+```bash
+php -S localhost:8000 -t public/
+```

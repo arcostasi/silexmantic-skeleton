@@ -17,11 +17,10 @@ class IndexController implements ControllerProviderInterface {
 
     /**
      * Index Connect
-     *
-     * @param Silex\Application $app
-     * @return $app['controllers_factory']
+     * @param Application $app
+     * @return mixed
      */
-    public function connect(Application $app) 
+    public function connect(Application $app)
     {
         $indexController = $app['controllers_factory'];
         $indexController->get('/', array($this, 'indexAction'))->bind('index');
@@ -31,13 +30,12 @@ class IndexController implements ControllerProviderInterface {
 
     /**
      * Index Action
-     *
-     * @param \Silex\Application $app
-     * @return $app['controllers_factory']
+     * @param Application $app
+     * @return mixed
      */
     public function indexAction(Application $app)
     {
-        return $app->json(['index']);
+        return $app['twig']->render('index.twig');
     }
 
 }

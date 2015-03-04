@@ -17,11 +17,10 @@ class UserController implements ControllerProviderInterface {
 
     /**
      * User Connect
-     *
-     * @param Silex\Application $app
-     * @return $app['controllers_factory']
+     * @param Application $app
+     * @return mixed
      */
-    public function connect(Application $app) 
+    public function connect(Application $app)
     {
         $userController = $app['controllers_factory'];
         $userController->get('/login', array($this, 'loginAction'))->bind('login');
@@ -29,7 +28,12 @@ class UserController implements ControllerProviderInterface {
         return $userController;
     }
 
-    public function loginAction(Application $app) 
+    /**
+     * Login Action
+     * @param Application $app
+     * @return \Symfony\Component\HttpFoundation\JsonResponse
+     */
+    public function loginAction(Application $app)
     {
         return $app->json(['login']);
     }

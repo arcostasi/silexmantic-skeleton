@@ -3,7 +3,7 @@
 namespace App\Util;
 
 /**
- * Classe utilizada para gerar o código de autenticação de mensagem 
+ * Classe utilizada para gerar token de autenticação temporária
  * no formato HMAC-SHA512 (128 bits)
  *
  * @author Anderson Costa <arcostasi@gmail.com>
@@ -31,7 +31,6 @@ class Token {
 
     /**
      * Obtém o token HMAC-SHA512 (128 bits)
-     *
      * @return (String) $this->token
      */
     public function getToken()
@@ -42,7 +41,6 @@ class Token {
 
     /**
      * Seta o token HMAC-SHA512 (128 bits)
-     *
      * @param (String), time()
      */
     public function setToken($number, $mktime)
@@ -66,8 +64,7 @@ class Token {
 
     /**
      * Seta o Salt utilizado na criptografia
-     *
-     * @param (String)
+     * @return string
      */
     private function getSalt()
     {
@@ -77,7 +74,6 @@ class Token {
 
     /**
      * Obtém o número do destinatário
-     *
      * @return (String)
      */
     public function getNumber()
@@ -88,7 +84,6 @@ class Token {
 
     /**
      * Seta o número do destinatário
-     *
      * @param (String)
      */
     public function setNumber($number)
@@ -99,7 +94,6 @@ class Token {
 
     /**
      * Obtém a data e hora da requisição
-     *
      * @return time()
      */
     public function getMktime()
@@ -110,7 +104,6 @@ class Token {
 
     /**
      * Seta a data e hora da requisição
-     *
      * @param time()
      */
     public function setMktime($mktime)
