@@ -46,3 +46,7 @@ php composer.phar install
 ```bash
 php -S 127.0.0.1:8000 -t public/
 ```
+
+##Copyright and license
+
+Code and documentation copyright (c) 2015, Code released under the New BSD license.
