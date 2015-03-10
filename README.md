@@ -23,6 +23,14 @@ cd silexmantic-skeleton/
 
 3 - Download Composer
 
+Run this in your terminal to get the latest Composer version:
+
+```bash
+curl -sS https://getcomposer.org/installer | php
+```
+
+or if you don't have curl:
+
 ```bash
 php -r "readfile('https://getcomposer.org/installer');" | php
 ```
@@ -36,5 +44,5 @@ php composer.phar install
 5 - Start PHP Built-in web server:
 
 ```bash
-php -S localhost:8000 -t public/
+php -S 127.0.0.1:8000 -t public/
 ```
