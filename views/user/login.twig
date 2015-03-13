@@ -1,4 +1,35 @@
-{% extends "user/layout.twig" %}
-{% block content %}
+{% extends "user/layout.twig" %} {% block content %}
+
+<main class="ui page grid">
+    <div class="row"></div>
+    <div class="row">
+        <div class="five wide column"></div>
+        <div class="five wide left aligned starter column">
+            <div class="ui huge header">Account Login</div>
+            <div class="ui divider"></div>
+            <div class="content">
+                <div class="ui large form">
+                    <div class="field">
+                        <label>Username</label>
+                        <div class="ui left icon input">
+                            <input type="text" name="username" placeholder="Your Username">
+                            <i class="user icon"></i>
+                        </div>
+                    </div>
+                    <div class="field">
+                        <label>Password</label>
+                        <div class="ui left icon input">
+                            <input name="password" type="text" placeholder="Your Password">
+                            <i class="lock icon"></i>
+                        </div>
+                    </div>
+                    <div class="ui primary button">Login</div>
+                </div>
+            </div>
+        </div>
+        <div class="five wide column"></div>
+    </div>
+</main>
+
 
 {% endblock %}

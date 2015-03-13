@@ -40,7 +40,7 @@ $app->register(new Silex\Provider\SecurityServiceProvider(), array(
             'anonymous' => true
         ),
         'login' => array(
-            'pattern' => '^/login$',
+            'pattern' => '^/user/login$',
             'anonymous' => true
         ),
         'admin' => array(

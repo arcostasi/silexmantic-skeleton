@@ -35,7 +35,7 @@ class UserController implements ControllerProviderInterface {
      */
     public function loginAction(Application $app)
     {
-        return $app->json(['login']);
+        return $app['twig']->render('user/login.twig', array());
     }
 
 }
