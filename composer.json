@@ -21,7 +21,7 @@
         "symfony/twig-bridge": "~2.7",
         "doctrine/dbal": "~2.5",
         "monolog/monolog": "~1.0",
-        "swiftmailer/swiftmailer": "~5.3"
+        "swiftmailer/swiftmailer": "~5.4"
     },
     "license": "New BSD",
     "authors": [
