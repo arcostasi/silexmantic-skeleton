@@ -17,6 +17,7 @@ class IndexController implements ControllerProviderInterface {
 
     /**
      * Index Connect
+     * 
      * @param Application $app
      * @return mixed
      */
@@ -30,6 +31,7 @@ class IndexController implements ControllerProviderInterface {
 
     /**
      * Index Action
+     * 
      * @param Application $app
      * @return mixed
      */

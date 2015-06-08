@@ -17,6 +17,7 @@ class UserController implements ControllerProviderInterface {
 
     /**
      * User Connect
+     * 
      * @param Application $app
      * @return mixed
      */
@@ -30,6 +31,7 @@ class UserController implements ControllerProviderInterface {
 
     /**
      * Login Action
+     * 
      * @param Application $app
      * @return \Symfony\Component\HttpFoundation\JsonResponse
      */

@@ -13,6 +13,7 @@ class BaseModel {
 
     /**
      * Database Connect
+     * 
      * @param $db
      */
     function __construct($db)

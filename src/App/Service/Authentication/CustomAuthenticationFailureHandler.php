@@ -16,6 +16,7 @@ class CustomAuthenticationFailureHandler implements AuthenticationFailureHandler
 
     /**
      * Authentication Failure Construct
+     * 
      * @param Application $app
      */
     public function __construct(Application $app)
@@ -25,6 +26,7 @@ class CustomAuthenticationFailureHandler implements AuthenticationFailureHandler
 
     /**
      * Authentication Failure
+     * 
      * @param Request $request
      * @param AuthenticationException $exception
      * @return \Symfony\Component\HttpFoundation\JsonResponse
@@ -34,22 +36,23 @@ class CustomAuthenticationFailureHandler implements AuthenticationFailureHandler
         $post = $request->request->all();
 
         $result = array(
-            'success' => false,
-            'error' => null
+            'status' => 'error',
+            'message' => null,
+            'code' => 401
         );
 
-        // Valida os parâmetros de login
+        // Validates the login parameters
         if (!$post['username']) {
-            $result['error'] = 'Usuário inválido.';
+            $result['message'] = 'Invalid User.';
         } else if (!$post['password']) {
-            $result['error'] = 'Senha inválida.';
+            $result['message'] = 'Invalid password.';
         } else if ($exception->getMessage() == 'Bad credentials.') {
-            $result['error'] = 'Acesso não autorizado.';
+            $result['message'] = 'Unauthorized access.';
             return $this->app->json($result);
         } else {
-            $result['error'] = $exception->getMessage();
+            $result['message'] = $exception->getMessage();
         }
 
-        return $this->app->json($result);
+        return $this->app->json($result, 401);
     }
 }

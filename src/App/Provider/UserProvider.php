@@ -19,6 +19,7 @@ class UserProvider extends BaseModel implements UserProviderInterface {
 
     /**
      * Load user by username
+     * 
      * @param string $username
      * @return User
      * @throws \Exception
@@ -35,7 +36,7 @@ class UserProvider extends BaseModel implements UserProviderInterface {
             ->execute();
 
         if (!$user = $stmt->fetchObject()) {
-            throw new \Exception(sprintf('Usuário "%s" não encontrado.', $username));
+            throw new \Exception(sprintf('User "%s" not found.', $username));
         }
 
         return new User($user->username, $user->password, explode(',', $user->roles), true, true, true, true);
@@ -43,6 +44,7 @@ class UserProvider extends BaseModel implements UserProviderInterface {
 
     /**
      * User refresh
+     * 
      * @param UserInterface $user
      * @return User
      * @throws \Exception
@@ -50,7 +52,7 @@ class UserProvider extends BaseModel implements UserProviderInterface {
     public function refreshUser(UserInterface $user)
     {
         if (!$user instanceof User) {
-            throw new \Exception(sprintf('A interface "%s" não é suportado.'), get_class($user));
+            throw new \Exception(sprintf('The interface "%s" is not supported.'), get_class($user));
         }
 
         return $this->loadUserByUsername($user->getUsername());
@@ -58,6 +60,7 @@ class UserProvider extends BaseModel implements UserProviderInterface {
 
     /**
      * Class supports
+     * 
      * @param string $class
      * @return bool
      */

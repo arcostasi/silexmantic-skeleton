@@ -20,6 +20,7 @@ class CustomAuthenticationSuccessHandler extends DefaultAuthenticationSuccessHan
 
     /**
      * Authentication Success Construct
+     * 
      * @param HttpUtils $httpUtils
      * @param array $options
      * @param Application $app
@@ -33,16 +34,17 @@ class CustomAuthenticationSuccessHandler extends DefaultAuthenticationSuccessHan
 
     /**
      * Authentication Success
+     * 
      * @param Request $request
      * @param TokenInterface $token
      * @return \Symfony\Component\HttpFoundation\JsonResponse
      */
     public function onAuthenticationSuccess(Request $request, TokenInterface $token)
     {
-        // Acesso autorizado, redireciona para o administrador
+        // Authorized access, redirects to the admin
         $result = array(
-            'success' => true,
-            'message' => 'Acesso autorizado.',
+            'status' => 'success',
+            'message' => 'Authorized access.',
             'redirect' => $this->app['url_generator']->generate('admin')
         );
 
