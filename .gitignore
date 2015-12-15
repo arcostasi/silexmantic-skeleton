@@ -1,5 +1,5 @@
 .DS_Store
-.composer.lock
+composer.lock
 .idea/
 !/data/log/README.md
 !/data/README.md
