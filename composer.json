@@ -17,10 +17,9 @@
         "symfony/serializer": "~2.8",
         "symfony/translation": "~2.8",
         "symfony/validator": "~2.8",
-        "symfony/monolog-bridge": "~2.8",
         "symfony/twig-bridge": "~2.8",
         "doctrine/dbal": "~2.5",
-        "monolog/monolog": "~1.0",
+        "symfony/monolog-bundle": "~2.8",
         "swiftmailer/swiftmailer": "~5.4"
     },
     "license": "New BSD",
