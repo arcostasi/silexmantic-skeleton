@@ -3,7 +3,7 @@ Silexmantic Skeleton
 
 A micro-MVC skeleton on the arms of Silex and Semantic-UI
 
-See the [online demo](http://arcostasi.com/silexmantic/).
+See the [online demo](http://git.arcostasi.com/silexmantic-skeleton/).
 
 This skeleton use Composer, Silex, Twig, jQuery and Semantic-UI
 
